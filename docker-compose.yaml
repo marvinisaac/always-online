@@ -10,3 +10,14 @@ services:
         restart: always
         volumes:
             - ./uptime:/app/data
+
+    shlink:
+        image: shlinkio/shlink:stable
+        environment:
+            - DEFAULT_DOMAIN=qckbt.cc
+            - IS_HTTPS_ENABLED=false
+            - GEOLITE_LICENSE_KEY=${SHLINK_GEOLITE_KEY}
+            - INITIAL_API_KEY=${SHLINK_API_KEY}
+        ports:
+            - 8080:8080
+        restart: always
