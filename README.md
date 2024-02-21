@@ -8,4 +8,6 @@
 
 ### How to Set Up
 1. Clone repository
-2. Create `.env` and replace with tunnel token
+2. Create `.env` and replace:
+    - tunnel token
+    - shlink geolite key and api key
