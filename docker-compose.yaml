@@ -18,6 +18,21 @@ services:
             - IS_HTTPS_ENABLED=true
             - GEOLITE_LICENSE_KEY=${SHLINK_GEOLITE_KEY}
             - INITIAL_API_KEY=${SHLINK_API_KEY}
+            - DB_DRIVER=maria
+            - DB_USER=root
+            - DB_PASSWORD=${DATABASE_ROOT_PASSWORD}
+            - DB_HOST=database
         ports:
             - 8080:8080
         restart: always
+
+    database:
+        image: mariadb:10.6
+        container_name: database
+        environment:
+            MARIADB_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
+        ports:
+            - 3306:3306
+        restart: always
+        volumes:
+            - ./database:/var/lib/mysql
