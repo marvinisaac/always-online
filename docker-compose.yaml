@@ -7,12 +7,14 @@ services:
 
     uptime:
         image: louislam/uptime-kuma:1.23.0-alpine
+        container_name: uptime
         restart: always
         volumes:
             - ./uptime:/app/data
 
-    shlink:
-        image: shlinkio/shlink:stable
+    qckbt:
+        image: shlinkio/shlink:3.7-roadrunner
+        container_name: qckbt
         environment:
             - DEFAULT_DOMAIN=qckbt.cc
             - IS_HTTPS_ENABLED=true
@@ -24,6 +26,23 @@ services:
             - DB_HOST=database
         ports:
             - 8080:8080
+        restart: always
+
+    biniph:
+        image: shlinkio/shlink:3.7-roadrunner
+        container_name: biniph
+        environment:
+            - DEFAULT_DOMAIN=bini.ph
+            - IS_HTTPS_ENABLED=true
+            - GEOLITE_LICENSE_KEY=${SHLINK_GEOLITE_KEY}
+            - INITIAL_API_KEY=${SHLINK_API_KEY}
+            - DB_DRIVER=maria
+            - DB_USER=root
+            - DB_PASSWORD=${DATABASE_ROOT_PASSWORD}
+            - DB_HOST=database
+            - DB_NAME=biniph
+        ports:
+            - 8088:8080
         restart: always
 
     database:

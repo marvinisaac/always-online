@@ -11,3 +11,10 @@
 2. Create `.env` and replace:
     - tunnel token
     - shlink geolite key and api key
+
+### Troubleshooting
+1. Unable to access database from local
+    - Check external IP
+        - ie 112.200.194.34
+    - Update firewall rule
+        - https://console.cloud.google.com/net-security/firewall-manager/firewall-policies/list?authuser=1
