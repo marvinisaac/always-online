@@ -13,7 +13,7 @@ services:
             - ./uptime:/app/data
 
     qckbt:
-        image: shlinkio/shlink:3.7-roadrunner
+        image: shlinkio/shlink:3.7.4-roadrunner
         container_name: qckbt
         environment:
             - DEFAULT_DOMAIN=qckbt.cc
@@ -29,7 +29,7 @@ services:
         restart: always
 
     biniph:
-        image: shlinkio/shlink:3.7-roadrunner
+        image: shlinkio/shlink:3.7.4-roadrunner
         container_name: biniph
         environment:
             - DEFAULT_DOMAIN=bini.ph
