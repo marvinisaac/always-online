@@ -1,4 +1,4 @@
-# GCP Always-Online Services
+# Always-Online Services
 
 ### Setup for always-online services deployed in Google Cloud
 - Cloudflare Tunnel
@@ -18,3 +18,14 @@
         - ie 112.200.194.34
     - Update firewall rule
         - https://console.cloud.google.com/net-security/firewall-manager/firewall-policies/list?authuser=1
+
+
+
+### Setup for always-online services deployed in AWS
+- Cloudflare Tunnel
+- Uptime Kuma
+
+### How to Set Up
+1. Clone repository
+2. Create `.env` and replace:
+    - tunnel token
