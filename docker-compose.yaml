@@ -1,3 +1,6 @@
+volumes:
+    n8n_data:
+
 services:
     tunnel:
         image: cloudflare/cloudflared:2023.8.1
@@ -16,13 +19,19 @@ services:
         image: docker.n8n.io/n8nio/n8n:1.64.3
         container_name: n8n
         environment:
-            DB_POSTGRESDB_HOST: database-pg
+            DB_POSTGRESDB_HOST: "database-pg"
             DB_POSTGRESDB_PASSWORD: ${DATABASE_PG_ROOT_PASSWORD}
-            N8N_HOST: automation.marvinisaac.com
+            GENERIC_TIMEZONE: "Asia/Manila"
+            N8N_HOST: "automation.marvinisaac.com"
             N8N_PORT: 80
+            NODE_ENV: production
+            N8N_LOG_LEVEL: debug
+            N8N_DIAGNOSTICS_ENABLED: false
+        ports:
+            - 80:80
         restart: always
         volumes:
-            - ./n8n:/home/node/.n8n
+            - n8n_data:/home/node/.n8n
 
     database:
         image: mariadb:10.6
